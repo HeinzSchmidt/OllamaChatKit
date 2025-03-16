@@ -5,7 +5,7 @@ import MessageList from "@/components/chat/message-list";
 import MessageInput from "@/components/chat/message-input";
 import SettingsDialog from "@/components/chat/settings-dialog";
 import { Button } from "@/components/ui/button";
-import { Settings as SettingsIcon } from "lucide-react";
+import { Settings as SettingsIcon, Loader2 } from "lucide-react";
 
 export default function Chat() {
   const [messages, setMessages] = useState<any[]>([]);
@@ -45,7 +45,12 @@ export default function Chat() {
   };
 
   if (isLoading) {
-    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-background">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+        <p className="text-lg text-muted-foreground">Loading chat interface...</p>
+      </div>
+    );
   }
 
   return (
